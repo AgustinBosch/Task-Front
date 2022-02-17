@@ -1,0 +1,11 @@
+<div [ngClass]="{'task':true, 'green':task.reminder}"(click)="toggleReminder()">
+    <div class="row align-items-center">
+       <div class="col">
+           <p class="m-0 fs-3">{{task.text}}</p>
+           <p class="m-0 fw-bold">{{task.date}}</p>
+       </div> 
+       <div class="col-auto">
+           <button class="btn btn-danger"(click)="deleteTask()">X</button>
+       </div>
+    </div>
+</div>

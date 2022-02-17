@@ -1,0 +1,5 @@
+.box{
+    border: 2px solid rgb(80, 80, 80);
+    border-radius: 5px;
+    max-width: max-content;
+}

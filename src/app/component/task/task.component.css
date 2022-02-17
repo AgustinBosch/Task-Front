@@ -1,0 +1,18 @@
+.task{
+    border-radius: 3px;
+    padding: 5px 15px;
+    margin: 15px;
+    border: 1px solid rgba(50, 50, 50,0)
+}
+.task:hover{
+    background-color: rgba(0, 0, 0,0.1);
+    border: 1px solid rgb(50, 50, 50);
+}
+
+.green{
+    border-left: 5px solid green;
+}
+
+.green:hover{
+    border-left: 5px solid green;
+}
