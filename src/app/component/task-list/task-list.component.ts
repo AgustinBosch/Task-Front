@@ -15,7 +15,7 @@ export class TaskListComponent implements OnInit {
   constructor(private taskService:TaskService, private eventService:EventService) { 
     this.sub = this.eventService.escucharTask().subscribe(
       (val)=> this.taskService.newTask(val).subscribe(
-        (task)=>this.tasks.push(task)));
+        (task)=> this.tasks.push(task)));
   }
 
   ngOnInit(): void {

@@ -5,5 +5,5 @@
     <div class="col-auto center">
       <button [ngClass]="{'btn':true, 'btn-success':!showForm, 'btn-danger':showForm }"  (click)="toggleForm()">{{showForm?"- Task":"+ Task"}}</button>
     </div>
-    <app-form-task *ngIf="showForm"></app-form-task>
+    <app-form-task *ngIf="showForm" (cerrarForm)="cerrarFormulario($event)"></app-form-task>
 </div>

@@ -19,4 +19,8 @@ export class HeaderComponent implements OnInit {
     this.showForm = !this.showForm;
   }
 
+  cerrarFormulario(b:boolean){
+    this.showForm = b;
+  }
+
 }

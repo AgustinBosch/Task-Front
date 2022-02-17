@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EventService } from 'src/app/service/event.service';
-import { TaskService } from 'src/app/service/task.service';
 
 @Component({
   selector: 'app-form-task',
@@ -9,6 +8,7 @@ import { TaskService } from 'src/app/service/task.service';
   styleUrls: ['./form-task.component.css']
 })
 export class FormTaskComponent implements OnInit {
+  @Output() cerrarForm:EventEmitter<boolean> = new EventEmitter();
   form: FormGroup;
 
   constructor(private formBuilder:FormBuilder, private eventService:EventService) { 
@@ -25,7 +25,9 @@ export class FormTaskComponent implements OnInit {
   onSubmit(event:Event){
     event.preventDefault;
     if(this.form.valid){
+      this.cerrarForm.emit(false);
       this.eventService.emitirTask(this.form.value);
+      this.form.reset();
     }else{
       console.log("form no valido");
     }
