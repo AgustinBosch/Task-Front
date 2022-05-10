@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http'
+import { catchError, Observable, throwError } from 'rxjs';
 import { Task } from '../model/task.model';
 
 @Injectable({
@@ -32,6 +32,34 @@ export class TaskService {
     console.log("llegue al service")
     const url = `${this.apiUrl}/crear`
     return this.http.post<Task>(url,task)
+  }
+
+
+  
+
+  getsTasks():Observable<Task[]>{
+    const url = `${this.apiUrl}/todos`
+    return this.http.get<Task[]>(url).pipe(catchError(this.handleError));
+  }
+
+
+  getssTasks():Observable<HttpResponse<Task[]>>{
+    const url = `${this.apiUrl}/todos`
+    return this.http.get<Task[]>(url, {observe:"response"});
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0) {
+      // A client-side or network error occurred. Handle it accordingly.
+      console.error('An error occurred:', error.error);
+    } else {
+      // The backend returned an unsuccessful response code.
+      // The response body may contain clues as to what went wrong.
+      console.error(
+        `Backend returned code ${error.status}, body was: `, error.error);
+    }
+    // Return an observable with a user-facing error message.
+    return throwError(() => new Error('Something bad happened; please try again later.'));
   }
   
 }
